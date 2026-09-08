@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Criteria, Review, School } from '../lib/types';
 import { CRITERIA_LABELS, schoolId } from '../lib/types';
 import { addReview, aggregate, averageOf } from '../lib/reviews';
@@ -146,13 +146,6 @@ export default function ReviewDialog({
         <div className="thin-scroll grid flex-1 gap-0 overflow-y-auto lg:grid-cols-[1.1fr_1fr]">
           {/* Form */}
           <form onSubmit={submit} noValidate className="p-6 lg:border-r lg:border-line">
-            {/* Puan yalnızca doğrulanmış hesaplardan alınır. */}
-            {!session && !skipped && (
-              <div className="mb-6">
-                <PhoneVerify onDone={() => setError(null)} onSkip={() => setSkipped(true)} />
-              </div>
-            )}
-
             <div className="flex items-baseline justify-between gap-3">
               <h3 className="display-sm text-[16px] text-ink">Bu okulu puanlayın</h3>
               {filled > 0 && (
@@ -191,7 +184,7 @@ export default function ReviewDialog({
                 <input
                   value={author}
                   onChange={(e) => setAuthor(e.target.value)}
-                  placeholder="Boş bırakırsanız isimsiz yayınlanır"
+                  placeholder="Boş bırakırsanız isimsiz kaydedilir"
                   className="field"
                 />
               </label>
@@ -204,6 +197,13 @@ export default function ReviewDialog({
                 </select>
               </label>
             </div>
+
+            {/* Puan yalnızca doğrulanmış hesaplardan alınır — aşamalı gösterim */}
+            {!session && !skipped && (
+              <div className="mt-5">
+                <PhoneVerify onDone={() => setError(null)} onSkip={() => setSkipped(true)} />
+              </div>
+            )}
 
             <p className="mt-4 rounded-xl border border-line bg-bg px-3.5 py-3 text-[13px] leading-relaxed text-muted">
               Yazılı yorum alınmıyor. Değerlendirme yalnızca bu altı başlıktaki
@@ -218,7 +218,7 @@ export default function ReviewDialog({
 
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <button type="submit" className="btn btn-primary">
-                Puanı yayınla
+                Puanı kaydet
               </button>
               {session && (
                 <span className="inline-flex items-center gap-1.5 text-[12.5px] text-ok">
@@ -230,7 +230,7 @@ export default function ReviewDialog({
               )}
               {saved && (
                 <span role="status" className="text-[13px] font-medium text-ok">
-                  Yayınlandı, puan güncellendi.
+                  Puanınız kaydedildi ve ortalamaya eklendi.
                 </span>
               )}
             </div>

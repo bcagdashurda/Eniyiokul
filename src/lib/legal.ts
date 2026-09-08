@@ -1,4 +1,4 @@
-﻿import type { LegalDoc } from './router';
+import type { LegalDoc } from './router';
 
 /**
  * Hukuki metinler.
@@ -196,7 +196,7 @@ export const DOCS: Record<LegalDoc, Doc> = {
             'Gerekmez, site bunlar olmadan çalışmaz',
           ],
           ['Ölçümleme', 'Hangi sayfaların kullanıldığını toplu ve anonim biçimde görmek', 'Açık rızanıza bağlı'],
-          ['Reklam', 'Kullanılmıyor', '—'],
+          ['Reklam', 'Kullanılmıyor', 'Yok'],
         ],
       },
       {
@@ -309,7 +309,7 @@ export const DOCS: Record<LegalDoc, Doc> = {
     title: 'Puanlama Kuralları',
     updated: UPDATED,
     intro:
-      'Sahte puanı sonradan temizlemek yerine baştan engelliyoruz: puan vermek SMS doğrulaması ister. Yine de uygulanan her ölçüt önceden ve açıkça burada yazılı; yayımlanmamış bir kural uygulanmaz.',
+      'Puanların güvenilirliğini korumak amacıyla platformda yalnızca SMS ile doğrulanmış hesaplar değerlendirme yapabilir. Uygulanan her ölçüt önceden ve açıkça burada yazılıdır; yayımlanmamış bir kural uygulanmaz.',
     blocks: [
       { t: 'h', x: 'Neden yazılı yorum almıyoruz' },
       {
@@ -364,14 +364,14 @@ export const DOCS: Record<LegalDoc, Doc> = {
         ],
       },
 
-      { t: 'h', x: 'Puan hesaptan çıkarılmaz' },
+      { t: 'h', x: 'Puanın silinmeyeceği durumlar' },
       {
         t: 'ul',
         x: [
-          'Okul memnun olmadığı için.',
-          'Okul sponsor olduğu için.',
-          'Puan düşük olduğu için.',
-          'Okul itiraz ettiği için.',
+          'Okul yönetiminin talebi veya memnuniyetsizliği.',
+          'Okulun sponsorluk veya kurumsal anlaşması bulunması.',
+          'Puan ortalamasının düşük veya eleştirel olması.',
+          'Somut kural ihlali içermeyen genel itirazlar.',
         ],
       },
 

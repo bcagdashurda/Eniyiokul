@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { reveal, withMotion } from '../lib/motion';
 import { PATHS } from '../lib/router';
@@ -14,7 +14,7 @@ import { n } from '../lib/format';
 const PROMISES = [
   {
     t: 'Puan vermek SMS doğrulaması ister',
-    d: 'Doğrulanmamış hesap puan veremez. Bir numara bir hesaptır ve bir okula yalnızca bir kez puan verebilir; toplu ve sahte puanlamanın önündeki asıl engel bu.',
+    d: 'Doğrulanmamış hesap puan veremez. Bir numara bir hesaptır ve bir okula yalnızca bir kez puan verebilir; puanların gerçek velilerden gelmesini sağlayan temel güvencemiz bu.',
   },
   {
     t: 'Okullar puansız başlar',
@@ -22,19 +22,19 @@ const PROMISES = [
   },
   {
     t: 'Yazılı yorum yok, yalnızca puan',
-    d: 'Serbest metin almıyoruz. Herkes aynı altı başlığı puanlıyor, bu yüzden okullar aynı ölçütle karşılaştırılabiliyor ve hakaret, dedikodu, kişisel hesaplaşma sorunu doğmuyor.',
+    d: 'Serbest metin almıyoruz. Herkes aynı altı başlığı puanlıyor, böylece okullar aynı ölçütle karşılaştırılabiliyor ve subjektif yorum tartışmaları yerine nesnel bir kıyaslama sağlanıyor.',
   },
   {
     t: 'Tek yıldız yerine altı başlık',
     d: 'Akademik başarı, öğretmen kadrosu, fiziki imkânlar, ücret karşılığı, veli iletişimi ve sosyal etkinlik ayrı puanlanıyor ve ayrı gösteriliyor. Bir okul nerede iyi, nerede zayıf, görebiliyorsunuz.',
   },
   {
-    t: 'Sahte puan baştan giremez',
-    d: 'Doğrulanmamış hesap puan veremediği için sahte puanı sonradan temizlemek gerekmiyor; sisteme hiç girmiyor. Aynı numara aynı okula ikinci kez puan veremez.',
+    t: 'Yalnızca doğrulanmış veli puanları',
+    d: 'SMS doğrulaması yapılmamış hesaplardan puan kabul edilmez. Böylece puan ortalamaları spekülasyondan uzak, doğrudan gerçek veli deneyimlerini yansıtır.',
   },
   {
-    t: 'Sponsorluk sıralamayı değiştirir, puanı değiştirmez',
-    d: 'Sponsorlu yerleşimler ayrı blokta duruyor ve her ekranda “Sponsorlu” etiketiyle görünüyor. Puana ve puana göre sıralamaya dokunmuyor.',
+    t: 'Sponsorluk puanı etkilemez',
+    d: 'Sponsorlu yerleşimler ayrı bir alanda “Sponsorlu” etiketiyle listelenir. Velilerin verdiği puanlara ve puana göre sıralamaya hiçbir etkisi yoktur.',
   },
   {
     t: 'Kaç kişinin puanladığı hep görünür',

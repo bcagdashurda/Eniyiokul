@@ -204,7 +204,7 @@ export default function SchoolBrowser({
             {sponsored.length > 0 && (
               <div className="mt-8">
                 <p className="label mb-3 text-amber-700">
-                  Sponsorlu · sıralama ücretlidir
+                  Öne çıkan okullar · Sponsorlu yerleşim
                 </p>
                 <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
                   {sponsored.map((s) => (
@@ -236,6 +236,18 @@ export default function SchoolBrowser({
                   <p className="mt-2 text-[14px] text-muted">
                     Aramayı sadeleştirin veya kademe filtresini kaldırın.
                   </p>
+                  {(q || level !== null) && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setQ('');
+                        setLevel(null);
+                      }}
+                      className="btn btn-outline mt-4"
+                    >
+                      Filtreleri temizle
+                    </button>
+                  )}
                 </div>
               ) : (
                 <>

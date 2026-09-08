@@ -19,7 +19,9 @@ const LEGAL: Record<string, LegalDoc> = {
   '#/kvkk': 'kvkk',
   '#/gizlilik': 'gizlilik',
   '#/kullanim-kosullari': 'kosullar',
+  '#/kosullar': 'kosullar',
   '#/puanlama-kurallari': 'puanlama',
+  '#/puanlama': 'puanlama',
 };
 
 export const PATHS = {
@@ -35,7 +37,7 @@ export const PATHS = {
 function parse(hash: string): Route {
   if (!hash.startsWith('#/')) return { name: 'home' };
   if (hash === PATHS.schools) return { name: 'schools' };
-  if (hash === PATHS.about) return { name: 'about' };
+  if (hash === PATHS.about || hash === '#/hakkinda') return { name: 'about' };
   const doc = LEGAL[hash];
   if (doc) return { name: 'legal', doc };
   return { name: 'home' };

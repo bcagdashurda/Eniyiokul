@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { reveal, withMotion } from '../lib/motion';
 import { PLACEMENTS, TIERS } from '../lib/sponsors';
@@ -37,8 +37,8 @@ export default function Sponsored({
               Öne çıkan okullar
             </h2>
             <p className="pretty mt-3 text-[15.5px] leading-relaxed text-muted">
-              Bu bölümdeki sıralama ücretlidir ve okulun puanıyla ilgisi yoktur.
-              Puanlar yalnızca velilerin verdiği notlardan oluşur.
+              Öne çıkan okullar profillerini zenginleştiren kurumlardır.
+              Değerlendirme puanları ise tamamen bağımsız veli oylarıyla belirlenir.
             </p>
           </div>
           <a

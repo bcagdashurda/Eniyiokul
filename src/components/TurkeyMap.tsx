@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { geoMercator, geoPath } from 'd3-geo';
 import gsap from 'gsap';
 import type { DistrictFile, ProvinceGeo } from '../lib/useData';
@@ -156,6 +156,9 @@ export default function TurkeyMap({
   const [hover, setHover] = useState<{ slug: string; cx: number; cy: number } | null>(null);
   const [hoverD, setHoverD] = useState<string | null>(null);
   const [dTip, setDTip] = useState<{ x: number; y: number } | null>(null);
+  /* Yakınlaştırılmışken tek parmak haritayı kaydırır; bu sırada tarayıcının
+     kendi kaydırması ve "aşağı çekip yenile" davranışı kapatılmalı. */
+  const [panning, setPanning] = useState(false);
 
   /* Kap boyutunu izle — harita gerçekten tam ekran dolsun. */
   useLayoutEffect(() => {
@@ -368,6 +371,7 @@ export default function TurkeyMap({
       const apply = () => {
         const v = view.current;
         g.setAttribute('transform', `translate(${v.x} ${v.y}) scale(${v.k})`);
+        setPanning(v.k > 1.05);
       };
 
       // Süren tweenler durdurulur. Etiket katmanınınki de: aksi halde
@@ -408,6 +412,8 @@ export default function TurkeyMap({
   const applyView = useCallback(() => {
     const v = view.current;
     zoomRef.current?.setAttribute('transform', `translate(${v.x} ${v.y}) scale(${v.k})`);
+    // Aynı değerle çağrıldığında React yeniden çizmez, her karede güvenli.
+    setPanning(v.k > 1.05);
   }, []);
 
   const settle = useCallback(() => {
@@ -576,7 +582,12 @@ export default function TurkeyMap({
     <div
       ref={wrapRef}
       className="map-ground absolute inset-0 overflow-hidden"
-      style={{ touchAction: 'pan-y' }}
+      style={{
+        // Uzaklaşmışken sayfa normal kaysın; yakınlaşınca parmak haritayı
+        // sürüklesin. overscroll-behavior sayfayı yenilemeyi de kapatır.
+        touchAction: panning ? 'none' : 'pan-y',
+        overscrollBehavior: 'contain',
+      }}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -589,7 +600,7 @@ export default function TurkeyMap({
         height={size.h}
         className={`block h-full w-full ${activeSlug ? 'map-focused' : ''}`}
         role="img"
-        aria-label={`Türkiye özel okul haritası — ${n(summary.toplamKurum)} okul, 81 il. Bir ile tıklayarak ilçelere inebilirsiniz.`}
+        aria-label={`Türkiye özel okul haritası: ${n(summary.toplamKurum)} okul, 81 il. Bir ile tıklayarak ilçelere inebilirsiniz.`}
         onMouseLeave={() => {
           setHover(null);
           setHoverD(null);
@@ -638,7 +649,7 @@ export default function TurkeyMap({
                 onClick={() => onSelectProvince(active ? null : meta.slug)}
                 tabIndex={0}
                 role="button"
-                aria-label={`${displayName(meta)} — ${n(c)} özel okul`}
+                aria-label={`${displayName(meta)}: ${n(c)} özel okul`}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -702,7 +713,7 @@ export default function TurkeyMap({
                   }}
                   tabIndex={0}
                   role="button"
-                  aria-label={`${titleCase(d.ad)} ilçesi — ${n(d.count)} okul`}
+                  aria-label={`${titleCase(d.ad)} ilçesi: ${n(d.count)} okul`}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();

@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import type { Summary } from '../lib/types';
 import { n } from '../lib/format';
 import { PROVINCES, displayName } from '../lib/provinces';
@@ -30,7 +30,7 @@ const COLS: { title: string; links: { href: string; label: string; ext?: boolean
   {
     title: 'Okullar için',
     links: [
-      { href: PATHS.schools, label: 'Okulunuzu ekleyin' },
+      { href: PATHS.schools, label: 'Kurumsal profil yönetimi' },
       { href: 'mailto:merhaba@eniyiokul.com', label: 'Bilgi düzeltme talebi', ext: true },
     ],
   },

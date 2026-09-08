@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { reveal, withMotion } from '../lib/motion';
 import { TIERS, TIER_ORDER } from '../lib/sponsors';
@@ -122,7 +122,7 @@ export default function Pricing() {
                 {[
                   ['Kontenjan sınırlı', 'Her il ve ilçede belirli sayıda yerleşim açılır; boş kontenjanı size bildiririz.'],
                   ['Sözleşme öncesi deneme', 'İlk ay performans raporunu görüp devam kararı verirsiniz.'],
-                  ['Puanlara müdahale yok', 'Sponsorluk, velilerin verdiği puanları ve yorumları hiçbir şekilde değiştirmez.'],
+                  ['Puanlar tamamen bağımsızdır', 'Sponsorluk yalnızca görünürlük sağlar; velilerin verdiği 6 başlıktaki değerlendirme puanlarını hiçbir şekilde etkilemez.'],
                 ].map(([t, d]) => (
                   <div key={t} className="flex gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />

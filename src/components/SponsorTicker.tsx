@@ -1,6 +1,7 @@
 import { PLACEMENTS, TIERS } from '../lib/sponsors';
 import { bySlug, displayName, plateLabel } from '../lib/provinces';
 import { schoolName } from '../lib/format';
+import { PATHS } from '../lib/router';
 
 /**
  * Navbar altında sürekli akan sponsorlu okul şeridi.
@@ -69,10 +70,10 @@ export default function SponsorTicker({
 
         <span className="hidden h-4 w-px shrink-0 bg-line sm:block" aria-hidden="true" />
         <a
-          href="#sponsorluk"
+          href={PATHS.schools}
           className="hidden shrink-0 whitespace-nowrap text-[12.5px] font-semibold text-brand underline underline-offset-4 hover:text-ink sm:block"
         >
-          Okulunuzu ekleyin
+          Okullar için
         </a>
       </div>
     </div>

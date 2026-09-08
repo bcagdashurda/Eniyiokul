@@ -185,7 +185,7 @@ export default function Hero(p: Props) {
                 </div>
               ))}
               <button type="button" onClick={p.onBrowse} className="btn btn-primary h-[46px] min-h-[46px]">
-                Okulları listele
+                Okulları gör
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="scroll-cue" aria-hidden="true">
                   <path d="M12 5v14m0 0-6-6m6 6 6-6" />
                 </svg>

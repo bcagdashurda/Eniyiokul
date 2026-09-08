@@ -19,11 +19,14 @@ export default function Navbar({
   summary,
   onSelectProvince,
   onOpenSchool,
+  onGoHome,
   onHome = true,
 }: {
   summary: Summary | null;
   onSelectProvince: (slug: string) => void;
   onOpenSchool: (provinceSlug: string, ilce: string, ad: string) => void;
+  /** Logoya basınca seçili il ve ilçeyi de temizler. */
+  onGoHome: () => void;
   /** Ana sayfada değilken bölüm bağlantıları ana sayfaya döner. */
   onHome?: boolean;
 }) {
@@ -85,8 +88,15 @@ export default function Navbar({
           aria-label="Ana gezinme"
         >
           {/* Marka */}
+          {/* Zaten "#/" üzerindeyken hash değişmediği için hashchange
+              tetiklenmiyor ve seçili il ekranda kalıyordu; durumu doğrudan
+              temizliyoruz. */}
           <a
             href={PATHS.home}
+            onClick={(e) => {
+              e.preventDefault();
+              onGoHome();
+            }}
             className="shrink-0 transition-transform duration-300 hover:scale-[1.02]"
             aria-label="eniyiokul ana sayfa"
           >
@@ -148,7 +158,7 @@ export default function Navbar({
               href={PATHS.schools}
               className="btn btn-outline hidden h-10 min-h-10 lg:inline-flex"
             >
-              Okulunuzu ekleyin
+              Okullar için
             </a>
             <a href={onHome ? '#okullar' : PATHS.home} className="btn btn-primary h-10 min-h-10">
               Okulları gör
@@ -176,6 +186,7 @@ export default function Navbar({
         summary={summary}
         onSelectProvince={onSelectProvince}
         onOpenSchool={onOpenSchool}
+        onGoHome={onGoHome}
         onHome={onHome}
       />
     </>

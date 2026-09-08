@@ -80,7 +80,7 @@ export function StarInput({
               type="button"
               role="radio"
               aria-checked={value === i}
-              aria-label={`${label}: ${i} yıldız — ${WORD[i]}`}
+              aria-label={`${label}: ${i} yıldız, ${WORD[i]}`}
               tabIndex={value === i || (value === 0 && i === 1) ? 0 : -1}
               onClick={() => onChange(i)}
               className="grid h-10 w-7 place-items-center rounded-md transition-transform hover:scale-110 active:scale-95"
@@ -101,9 +101,9 @@ export function StarInput({
         })}
       </div>
       <span
-        className={`w-14 shrink-0 text-[12px] ${value ? 'font-medium text-ink' : 'text-muted-2'}`}
+        className={`w-16 shrink-0 text-[12px] ${value ? 'font-medium text-ink' : 'text-muted-2'}`}
       >
-        {value ? WORD[value] : '—'}
+        {value ? WORD[value] : 'Seçilmedi'}
       </span>
     </div>
   );

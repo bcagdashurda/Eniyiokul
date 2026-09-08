@@ -71,10 +71,14 @@
     scroll-behavior: smooth;
     /* Başlık (72) + sponsor şeridi (44) + nefes payı */
     scroll-padding-top: 132px;
+    /* Sayfanın en üstündeki tam ekran harita parmakla sürüklenirken
+       tarayıcının "aşağı çek yenile" hareketi devreye giriyordu. */
+    overscroll-behavior-y: contain;
   }
 
   body {
     margin: 0;
+    overscroll-behavior-y: contain;
     background: var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);

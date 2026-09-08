@@ -1,4 +1,4 @@
-﻿import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { Summary } from '../lib/types';
 import { PROVINCES, bySlug, displayName, plateLabel } from '../lib/provinces';
 import { LEVEL_LABEL, n, schoolName, titleCase } from '../lib/format';
@@ -208,46 +208,57 @@ export default function ProvinceSearch({
         )}
       </div>
 
-      {open && (hits.length > 0 || loading) && (
+      {open && (hits.length > 0 || loading || q.trim().length >= 2) && (
         <div className="float absolute z-50 mt-1.5 w-[min(460px,90vw)] overflow-hidden rounded-xl">
-          <ul id={listId} role="listbox" className="max-h-[400px] overflow-y-auto py-1">
-            {hits.map((h, i) => (
-              <li key={`${h.kind}-${h.slug}-${h.kind === 'okul' ? h.ad : ''}`}>
-                {i === 0 && h.kind === 'il' && <Group>İller</Group>}
-                {i === firstSchool && <Group>Okullar</Group>}
-                <button
-                  type="button"
-                  role="option"
-                  aria-selected={i === cursor}
-                  onMouseEnter={() => setCursor(i)}
-                  onMouseDown={(e) => e.preventDefault()}
-                  onClick={() => choose(h)}
-                  className={`flex w-full items-center gap-2.5 px-3 py-2.5 text-left ${
-                    i === cursor ? 'bg-brand-50' : ''
-                  }`}
-                >
-                  {h.kind === 'il' ? (
-                    <span className="plate w-7 shrink-0 rounded border border-line bg-surface py-0.5 text-center text-[11px] text-muted">
-                      {h.plate}
+          {hits.length > 0 && (
+            <ul id={listId} role="listbox" className="max-h-[400px] overflow-y-auto py-1">
+              {hits.map((h, i) => (
+                <li key={`${h.kind}-${h.slug}-${h.kind === 'okul' ? h.ad : ''}`}>
+                  {i === 0 && h.kind === 'il' && <Group>İller</Group>}
+                  {i === firstSchool && <Group>Okullar</Group>}
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={i === cursor}
+                    onMouseEnter={() => setCursor(i)}
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => choose(h)}
+                    className={`flex w-full items-center gap-2.5 px-3 py-2.5 text-left ${
+                      i === cursor ? 'bg-brand-50' : ''
+                    }`}
+                  >
+                    {h.kind === 'il' ? (
+                      <span className="plate w-7 shrink-0 rounded border border-line bg-surface py-0.5 text-center text-[11px] text-muted">
+                        {h.plate}
+                      </span>
+                    ) : (
+                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-bg-2">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-muted)" strokeWidth="2" aria-hidden="true">
+                          <path d="M3 10 12 5l9 5-9 5-9-5Z" />
+                          <path d="M7 12.5V17c0 1 2.2 2 5 2s5-1 5-2v-4.5" />
+                        </svg>
+                      </span>
+                    )}
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-[14px] font-medium text-ink">
+                        {h.label}
+                      </span>
+                      <span className="block truncate text-[12px] text-muted">{h.sub}</span>
                     </span>
-                  ) : (
-                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-bg-2">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-muted)" strokeWidth="2" aria-hidden="true">
-                        <path d="M3 10 12 5l9 5-9 5-9-5Z" />
-                        <path d="M7 12.5V17c0 1 2.2 2 5 2s5-1 5-2v-4.5" />
-                      </svg>
-                    </span>
-                  )}
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-[14px] font-medium text-ink">
-                      {h.label}
-                    </span>
-                    <span className="block truncate text-[12px] text-muted">{h.sub}</span>
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ul>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {hits.length === 0 && !loading && q.trim().length >= 2 && (
+            <div className="px-4 py-4 text-center">
+              <p className="text-[13.5px] font-semibold text-ink">Eşleşen okul veya il bulunamadı</p>
+              <p className="mt-1 text-[12px] text-muted">
+                İl adı veya kurum adının yazımını kontrol edebilirsiniz.
+              </p>
+            </div>
+          )}
 
           {loading && (
             <p className="border-t border-line px-3 py-2 text-[12.5px] text-muted" aria-live="polite">

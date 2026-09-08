@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { formatPhone, isValidPhone, verify } from '../lib/auth';
 import { PATHS } from '../lib/router';
 
@@ -63,10 +63,9 @@ export default function PhoneVerify({
           </svg>
         </span>
         <div className="min-w-0">
-          <h3 className="display-sm text-[16px] text-ink">Puan vermek için telefonunuzu doğrulayın</h3>
+          <h3 className="display-sm text-[16px] text-ink">Telefon numarasıyla doğrulama</h3>
           <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted">
-            Sahte ve toplu puanlamayı engellemenin en pratik yolu bu. Bir numara
-            bir hesaptır ve bir okula yalnızca bir kez puan verebilir.
+            Puanların gerçek velilerden geldiğini teyit etmek için numaranızı SMS ile bir kez doğruluyoruz. Bir numara bir hesaptır ve bir okula bir kez puan verebilir.
           </p>
         </div>
       </div>

@@ -123,8 +123,8 @@ export default function TrustBand() {
                 </h2>
 
                 <p className="pretty mt-6 max-w-[520px] text-[16.5px] leading-relaxed text-muted">
-                  Bir okul puanını değersizleştiren tek şey vardır: sahte puan.
-                  Bir numara bir hesaptır ve bir okula yalnızca bir kez puan verir.
+                  Puanların güvenilirliği, her değerlendirmenin doğrulanmış bir veli hesabına
+                  dayanmasından gelir. Her numara tek bir veliyi temsil eder ve bir kuruma yalnızca bir kez puan verebilir.
                 </p>
               </div>
 

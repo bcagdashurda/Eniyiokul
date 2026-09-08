@@ -94,7 +94,7 @@ export default function SchoolCard({
           onClick={() => onRate(school)}
           className="btn btn-outline h-10 min-h-10 text-[13.5px]"
         >
-          {agg ? 'Değerlendir' : 'İlk değerlendirmeyi yap'}
+          {agg ? 'Puan ver' : 'İlk puanı siz verin'}
         </button>
         {school.tel && (
           <a

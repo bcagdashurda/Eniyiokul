@@ -60,8 +60,8 @@ const GROUPS: { title: string; items: Item[] }[] = [
     items: [
       {
         href: PATHS.schools,
-        label: 'Okulunuzu ekleyin',
-        desc: 'Profil ve sponsorluk',
+        label: 'Okullar için',
+        desc: 'Kurumsal profil yönetimi',
         icon: 'M12 5v14M5 12h14',
       },
     ],
@@ -74,6 +74,7 @@ export default function MobileMenu({
   summary,
   onSelectProvince,
   onOpenSchool,
+  onGoHome,
   onHome,
 }: {
   open: boolean;
@@ -81,6 +82,7 @@ export default function MobileMenu({
   summary: Summary | null;
   onSelectProvince: (slug: string) => void;
   onOpenSchool: (provinceSlug: string, ilce: string, ad: string) => void;
+  onGoHome: () => void;
   onHome: boolean;
 }) {
   const panel = useRef<HTMLDivElement>(null);
@@ -167,7 +169,15 @@ export default function MobileMenu({
       >
         {/* Başlık */}
         <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-3.5">
-          <a href={PATHS.home} onClick={onClose} aria-label="Ana sayfa">
+          <a
+            href={PATHS.home}
+            onClick={(e) => {
+              e.preventDefault();
+              onGoHome();
+              onClose();
+            }}
+            aria-label="Ana sayfa"
+          >
             <Logo size="sm" />
           </a>
           <button
@@ -264,7 +274,7 @@ export default function MobileMenu({
             onClick={onClose}
             className="btn btn-primary h-12 min-h-12 w-full text-[15px]"
           >
-            Okulları listele
+            Okulları gör
           </a>
           <div className="mt-3 flex items-center justify-between gap-3 text-[12.5px]">
             <a href="mailto:merhaba@eniyiokul.com" className="text-muted hover:text-ink">

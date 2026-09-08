@@ -1,4 +1,4 @@
-﻿import Pricing from '../components/Pricing';
+import Pricing from '../components/Pricing';
 import { PATHS } from '../lib/router';
 import { n } from '../lib/format';
 import type { Summary } from '../lib/types';
@@ -76,7 +76,7 @@ export default function ForSchools({ summary }: { summary: Summary | null }) {
               <p className="pretty mt-4 max-w-[640px] text-[17px] leading-relaxed text-muted">
                 {summary ? n(summary.toplamKurum) : '12.844'} özel okulun tamamı MEB
                 kayıtlarından geldiği için burada. Profilinizi doğrulayıp
-                değerlendirmelere yanıt verebilir, isterseniz öne çıkabilirsiniz.
+                bilgilerinizi güncelleyebilir, puanlarınızı takip edebilir ve isterseniz öne çıkabilirsiniz.
               </p>
               <div className="mt-7 flex flex-wrap gap-2.5">
                 <a href="#teklif" className="btn btn-primary">

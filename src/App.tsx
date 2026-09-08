@@ -54,6 +54,15 @@ export default function App() {
     }
   }, []);
 
+  /** Logo ve "Türkiye" bağlantıları: sayfayı ve harita seçimini sıfırla. */
+  const goHome = useCallback(() => {
+    setSlug(null);
+    setDistrict(null);
+    setRating(null);
+    if (window.location.hash.startsWith('#/')) window.location.hash = '#/';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   const selectProvince = useCallback((s: string) => {
     if (window.location.hash.startsWith('#/')) window.location.hash = '#/';
     setSlug(s);
@@ -86,6 +95,7 @@ export default function App() {
         summary={summary}
         onSelectProvince={selectProvince}
         onOpenSchool={openSchool}
+        onGoHome={goHome}
         onHome={onHome}
       />
 

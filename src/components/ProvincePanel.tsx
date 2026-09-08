@@ -108,7 +108,7 @@ export default function ProvincePanel({
           <div className="rounded-xl border border-dashed border-line p-4">
             <p className="text-[14px] font-semibold text-ink">Kayıtlı özel okul yok</p>
             <p className="mt-1.5 text-[13px] leading-relaxed text-muted">
-              {displayName(meta)}, MEB’in özel öğretim kurumları listesinde yer almıyor.
+              {displayName(meta)} ilinde MEB'e kayıtlı faal özel öğretim kurumu bulunmamaktadır.
             </p>
           </div>
         ) : (

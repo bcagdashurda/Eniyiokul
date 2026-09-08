@@ -47,9 +47,11 @@ const COLS: { title: string; links: { href: string; label: string; ext?: boolean
 export default function Footer({
   summary,
   onSelectProvince,
+  onGoHome,
 }: {
   summary: Summary;
   onSelectProvince: (s: string) => void;
+  onGoHome?: () => void;
 }) {
   const [subscribed, setSubscribed] = useState(false);
 
@@ -107,7 +109,14 @@ export default function Footer({
       <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 lg:py-14">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_2.4fr] lg:gap-12">
           <div>
-            <a href={PATHS.home} aria-label="eniyiokul ana sayfa">
+            <a
+              href={PATHS.home}
+              onClick={(e) => {
+                e.preventDefault();
+                onGoHome?.();
+              }}
+              aria-label="eniyiokul ana sayfa"
+            >
               <Logo onDark />
             </a>
 
@@ -146,6 +155,14 @@ export default function Footer({
                     <li key={l.label}>
                       <a
                         href={l.href}
+                        onClick={
+                          l.label === 'Türkiye haritası'
+                            ? (e) => {
+                                e.preventDefault();
+                                onGoHome?.();
+                              }
+                            : undefined
+                        }
                         className="text-[14px] text-white/70 transition-colors hover:text-white"
                       >
                         {l.label}

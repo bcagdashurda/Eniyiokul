@@ -75,7 +75,7 @@ export default function MobileMenu({
   onSelectProvince,
   onOpenSchool,
   onGoHome,
-  onHome,
+  onHome: _onHome,
 }: {
   open: boolean;
   onClose: () => void;
@@ -83,7 +83,7 @@ export default function MobileMenu({
   onSelectProvince: (slug: string) => void;
   onOpenSchool: (provinceSlug: string, ilce: string, ad: string) => void;
   onGoHome: () => void;
-  onHome: boolean;
+  onHome?: boolean;
 }) {
   const panel = useRef<HTMLDivElement>(null);
   const backdrop = useRef<HTMLDivElement>(null);
@@ -152,7 +152,7 @@ export default function MobileMenu({
 
   if (!open) return null;
 
-  const href = (h: string) => (h.startsWith('#/') || onHome ? h : PATHS.home);
+  const href = (h: string) => h;
 
   return (
     <div className="fixed inset-0 z-[80] xl:hidden" role="dialog" aria-modal="true" aria-label="Menü">
@@ -270,7 +270,7 @@ export default function MobileMenu({
           style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}
         >
           <a
-            href={onHome ? '#okullar' : PATHS.home}
+            href="#okullar"
             onClick={onClose}
             className="btn btn-primary h-12 min-h-12 w-full text-[15px]"
           >

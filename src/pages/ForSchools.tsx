@@ -79,12 +79,24 @@ export default function ForSchools({ summary }: { summary: Summary | null }) {
                 bilgilerinizi güncelleyebilir, puanlarınızı takip edebilir ve isterseniz öne çıkabilirsiniz.
               </p>
               <div className="mt-7 flex flex-wrap gap-2.5">
-                <a href="#teklif" className="btn btn-primary">
+                <button
+                  type="button"
+                  onClick={() => {
+                    document.getElementById('teklif')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
+                  className="btn btn-primary"
+                >
                   Teklif alın
-                </a>
-                <a href="#nasil-olur" className="btn btn-outline">
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    document.getElementById('nasil-olur')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
+                  className="btn btn-outline"
+                >
                   Nasıl işliyor?
-                </a>
+                </button>
               </div>
             </div>
 

@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import SponsorTicker from './components/SponsorTicker';
 import Hero from './components/Hero';
@@ -59,8 +59,10 @@ export default function App() {
     setSlug(null);
     setDistrict(null);
     setRating(null);
-    if (window.location.hash.startsWith('#/')) window.location.hash = '#/';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.location.hash !== '#/' && window.location.hash !== '') {
+      window.location.hash = '#/';
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, []);
 
   const selectProvince = useCallback((s: string) => {
@@ -151,7 +153,13 @@ export default function App() {
         </main>
       )}
 
-      {summary && <Footer summary={summary} onSelectProvince={selectProvince} />}
+      {summary && (
+        <Footer
+          summary={summary}
+          onSelectProvince={selectProvince}
+          onGoHome={goHome}
+        />
+      )}
 
       {rating && (
         <ReviewDialog

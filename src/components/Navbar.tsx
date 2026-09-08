@@ -122,7 +122,7 @@ export default function Navbar({
               return (
                 <li key={l.id}>
                   <a
-                    href={onHome ? `#${l.id}` : `${PATHS.home}`}
+                    href={`#${l.id}`}
                     aria-current={on ? 'true' : undefined}
                     className={`relative block rounded-lg px-3.5 py-2 text-[14px] font-medium transition-colors ${
                       on ? 'text-ink' : 'text-muted hover:text-ink'
@@ -160,7 +160,7 @@ export default function Navbar({
             >
               Okullar için
             </a>
-            <a href={onHome ? '#okullar' : PATHS.home} className="btn btn-primary h-10 min-h-10">
+            <a href="#okullar" className="btn btn-primary h-10 min-h-10">
               Okulları gör
             </a>
             <button

@@ -51,7 +51,9 @@ export function useRoute(): Route {
       const next = parse(window.location.hash);
       setRoute(next);
       // Sayfa değişiminde başa dön; bölüm bağlantılarına dokunma.
-      if (window.location.hash.startsWith('#/')) window.scrollTo({ top: 0 });
+      if (window.location.hash.startsWith('#/')) {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
     };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);

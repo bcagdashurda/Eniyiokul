@@ -22,12 +22,12 @@ export default function Pricing() {
         <div className="max-w-[680px]">
           <p className="label text-brand">Okullar için</p>
           <h2 id="pr-title" className="display mt-3 text-[clamp(28px,3.6vw,42px)] text-ink">
-            Görünürlük satılır, puan satılmaz.
+            Sıranızı siz belirleyin, puanınızı veliler.
           </h2>
           <p className="pretty mt-4 text-[16px] leading-relaxed text-muted">
-            Sponsorluk, okulunuzun listede nerede durduğunu belirler. Değerlendirme
-            puanına ve puana göre yapılan sıralamaya dokunmaz;
-            her sponsorlu yerleşim kullanıcıya açıkça etiketlenir.
+            Sponsorluk, okulunuzun listede nerede durduğunu belirler. Puanınız ise
+            doğrulanmış velilerin altı başlıkta verdiği notlardan oluşur. Her
+            sponsorlu yerleşim kullanıcıya açıkça etiketlenir.
           </p>
         </div>
 

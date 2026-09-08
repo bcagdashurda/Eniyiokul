@@ -34,8 +34,8 @@ const RULES: { t: string; s: 'ok' | 'blocked' }[] = [
 
 const POINTS = [
   {
-    t: 'Puan satın alınamaz',
-    d: 'Bütün okullar puansız başlar. Sponsorluk sıralamayı değiştirir, puana dokunmaz.',
+    t: 'Puan tek kaynaktan gelir',
+    d: 'Bütün okullar puansız başlar. Ortalamayı oluşturan tek şey, doğrulanmış velilerin verdiği notlardır.',
   },
   {
     t: 'Altı ayrı başlık',

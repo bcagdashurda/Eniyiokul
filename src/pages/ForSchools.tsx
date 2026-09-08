@@ -19,23 +19,23 @@ const STEPS = [
     d: 'Fotoğraf, tanıtım metni, kademe ve iletişim bilgilerini siz güncellersiniz. Adres ve kurum türü MEB kaydından gelir.',
   },
   {
-    t: 'Değerlendirmelere yanıt verin',
-    d: 'Okulunuz hakkında yazılan her değerlendirmeye herkese açık yanıt yazabilirsiniz. Yanıt, yorumun hemen altında görünür.',
+    t: 'Puanlarınızı takip edin',
+    d: 'Altı başlığın hangisinde nerede olduğunuzu ve ilçenizdeki diğer okullara göre konumunuzu panelden görürsünüz.',
   },
   {
     t: 'İsterseniz öne çıkın',
-    d: 'Sponsorluk yalnızca listedeki sıranızı değiştirir. Puanınıza, yorumlara ve puana göre sıralamaya dokunmaz.',
+    d: 'Sponsorluk yalnızca listedeki sıranızı değiştirir. Puanınıza ve puana göre sıralamaya dokunmaz.',
   },
 ];
 
 const FAQ = [
   {
     q: 'Sponsor olursam puanım yükselir mi?',
-    a: 'Hayır. Sponsorluk yalnızca yerleşim satın alır: kartınız ayrı bir blokta ve “Sponsorlu” etiketiyle üstte görünür. Puan yalnızca velilerin değerlendirmelerinden hesaplanır ve sponsorluk bu hesaba hiçbir şekilde girmez.',
+    a: 'Hayır. Sponsorluk yalnızca yerleşim satın alır: kartınız ayrı bir blokta ve “Sponsorlu” etiketiyle üstte görünür. Puan yalnızca velilerin verdiği notlardan hesaplanır ve sponsorluk bu hesaba hiçbir şekilde girmez.',
   },
   {
-    q: 'Olumsuz bir yorumu kaldırtabilir miyim?',
-    a: 'Yalnızca yayımlanmış değerlendirme kurallarımıza aykırıysa. Hakaret, kişisel veri ifşası, alakasız içerik ve doğrulanamayan somut suçlamalar kaldırılır. “Memnun olmadım” gerekçesi tek başına yeterli değildir; bunun yerine yorumun altına yanıt yazabilirsiniz.',
+    q: 'Puanımı nasıl yükseltirim?',
+    a: 'Velilerin puanladığı altı başlıkta iyileşerek: akademik başarı, öğretmen kadrosu, fiziki imkânlar, ücret karşılığı, veli iletişimi ve sosyal etkinlik. Panelde hangi başlıkta nerede olduğunuzu görürsünüz, böylece nereye yükleneceğiniz belli olur. Bir puanın kurala aykırı olduğunu düşünüyorsanız bildirebilirsiniz; inceleme ölçütleri Puanlama Kuralları sayfasında yazılıdır.',
   },
   {
     q: 'Kurum bilgilerim yanlış görünüyor, ne yapmalıyım?',
@@ -92,9 +92,9 @@ export default function ForSchools({ summary }: { summary: Summary | null }) {
               <p className="text-[14px] font-semibold text-ink">Baştan söyleyelim</p>
               <ul className="mt-3.5 space-y-3">
                 {[
-                  'Puan satılmaz. Sponsorluk sıralamayı değiştirir, puanı değiştirmez.',
+                  'Sponsorluk listedeki sıranızı belirler; puanınız velilerin verdiği notlarla oluşur.',
                   'Sponsorlu her yerleşim kullanıcıya açıkça etiketlenir.',
-                  'Olumsuz yorumlar ücret karşılığı kaldırılmaz.',
+                  'Puan vermek SMS doğrulaması ister; her puanın arkasında doğrulanmış bir hesap vardır.',
                 ].map((t) => (
                   <li key={t} className="flex gap-2.5 text-[14px] leading-snug text-muted">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" strokeWidth="2.5" className="mt-0.5 shrink-0" aria-hidden="true">

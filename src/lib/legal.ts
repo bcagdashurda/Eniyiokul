@@ -211,7 +211,7 @@ export const DOCS: Record<LegalDoc, Doc> = {
       },
       {
         t: 'p',
-        x: 'Değerlendirmenizi istediğiniz zaman düzeltebilir veya kaldırabilirsiniz. Kaldırdığınızda puan hesabından da çıkarılır.',
+        x: 'Verdiğiniz puanı istediğiniz zaman güncelleyebilir veya geri çekebilirsiniz. Geri çektiğinizde okulun ortalamasından da düşer.',
       },
 
       { t: 'h', x: 'Güvenlik' },
@@ -223,7 +223,7 @@ export const DOCS: Record<LegalDoc, Doc> = {
       { t: 'h', x: 'Çocukların verileri' },
       {
         t: 'p',
-        x: 'Platform velilere yöneliktir. Değerlendirmelerde öğrenci adı, sınıfı veya öğrenciyi tanınabilir kılacak başka bir bilgi yazmayın; bu tür içerikler kaldırılır.',
+        x: 'Platform velilere yöneliktir. Serbest metin alınmadığı için öğrenciye ilişkin bir bilginin yayımlanması söz konusu değildir; yalnızca altı başlıktaki puanlar kaydedilir.',
       },
     ],
   },
@@ -309,7 +309,7 @@ export const DOCS: Record<LegalDoc, Doc> = {
     title: 'Puanlama Kuralları',
     updated: UPDATED,
     intro:
-      'Bir puanın hangi durumda geçerli sayılacağını, hangi durumda hesaptan çıkarılacağını önceden ve açıkça yazıyoruz. Yayımlanmamış bir kural uygulanmaz.',
+      'Sahte puanı sonradan temizlemek yerine baştan engelliyoruz: puan vermek SMS doğrulaması ister. Yine de uygulanan her ölçüt önceden ve açıkça burada yazılı; yayımlanmamış bir kural uygulanmaz.',
     blocks: [
       { t: 'h', x: 'Neden yazılı yorum almıyoruz' },
       {

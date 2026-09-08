@@ -18,7 +18,7 @@ const PROMISES = [
   },
   {
     t: 'Okullar puansız başlar',
-    d: 'Puan satın alınamaz. Listedeki 12.844 okulun tamamı sıfırdan başlıyor. Puan yalnızca velilerin verdiği notlarla oluşuyor.',
+    d: 'Listedeki 12.844 okulun tamamı sıfırdan başlıyor. Ortalamayı oluşturan tek kaynak, doğrulanmış velilerin verdiği notlar.',
   },
   {
     t: 'Yazılı yorum yok, yalnızca puan',
@@ -29,8 +29,8 @@ const PROMISES = [
     d: 'Akademik başarı, öğretmen kadrosu, fiziki imkânlar, ücret karşılığı, veli iletişimi ve sosyal etkinlik ayrı puanlanıyor ve ayrı gösteriliyor. Bir okul nerede iyi, nerede zayıf, görebiliyorsunuz.',
   },
   {
-    t: 'Puan hiçbir gerekçeyle silinmez',
-    d: 'Bir puanı yalnızca sahte olduğu tespit edilirse çıkarıyoruz. Okulun sponsor olması ya da puandan memnun olmaması gerekçe sayılmıyor.',
+    t: 'Sahte puan baştan giremez',
+    d: 'Doğrulanmamış hesap puan veremediği için sahte puanı sonradan temizlemek gerekmiyor; sisteme hiç girmiyor. Aynı numara aynı okula ikinci kez puan veremez.',
   },
   {
     t: 'Sponsorluk sıralamayı değiştirir, puanı değiştirmez',
@@ -75,9 +75,8 @@ export default function WhyUs({ reviewCount }: { reviewCount: number }) {
             <div className="mt-7 rounded-2xl border border-line bg-bg p-5">
               <p className="text-[13.5px] font-semibold text-ink">Şeffaflık taahhüdü</p>
               <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted">
-                Puanlama kurallarımız herkese açık. Bir puanın hangi durumda
-                geçersiz sayılacağı önceden yazılı, kararlar da aylık olarak
-                yayımlanıyor.
+                Puanlama kurallarımızın tamamı herkese açık ve önceden yazılı.
+                Uyguladığımız her karar aylık olarak yayımlanıyor.
               </p>
               <a
                 href={PATHS.puanlama}
